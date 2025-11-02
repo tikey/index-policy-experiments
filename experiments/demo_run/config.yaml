@@ -1,0 +1,56 @@
+# Конфігурація за замовчуванням (відповідає §4.8.2)
+
+window:
+  short: 200        # |W_t| для оперативних оцінок
+  long:  2000       # |W_long| для повільної рекалібровки
+
+norm:
+  quantiles:
+    low: 0.05
+    high: 0.95
+
+risk:
+  delta_total: 0.10
+  delta_min: 0.01
+  delta_max: 0.15
+  alpha_init: 0.05
+  swap_limit: 10
+
+index:
+  alpha_base: [0.25, 0.25, 0.25, 0.25]   # для Phi_prio, Phi_stale, Phi_load, Phi_link
+  alpha5_bounds: [0.05, 0.40]            # межі для ваги ризикової компоненти
+  beta_bounds: [-0.5, 0.5]
+  hysteresis: 0.1
+
+adapt:
+  fast:
+    eta: 0.15
+    H: 10
+    tau_down: 0.8
+    tau_up: 1.0
+    s5_min: 0.05
+    s5_max: 0.40
+  slow:
+    mu: 0.1
+    dT_events: 500
+
+relevance:
+  weight_risk: [1.0, 1.0, 1.0]  # w_k^(r) для 3 обмежень
+  a_bounds: [0.0, 1.0]
+
+calibration:
+  lambda: 0.001
+  beta: 0.2
+  tau: 1.0
+  gamma: 0.5
+  xi: 0.01
+
+capacity:
+  C: 3
+
+scenario:
+  seed: 42
+  duration_events: 600
+  num_objects: 40
+  link_profile: "intermittent"  # "intermittent" | "stable"
+  load_profile: "bursty"        # "bursty" | "smooth"
